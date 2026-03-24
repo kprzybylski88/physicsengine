@@ -1,0 +1,25 @@
+{
+  "name": "physicsengine",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "tsc",
+    "copy-html": "cp src/index.html dist/index.html",
+    "serve": "npm run build && npm run copy-html && serve dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kprzybylski88/physicsengine.git"
+  },
+  "author": "K&M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kprzybylski88/physicsengine/issues"
+  },
+  "homepage": "https://github.com/kprzybylski88/physicsengine#readme",
+  "devDependencies": {
+    "serve": "^14.2.6",
+    "typescript": "^6.0.2"
+  }
+}
