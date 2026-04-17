@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "copy-html": "cp src/index.html dist/index.html",
-    "serve": "npm run build && npm run copy-html && serve dist/"
+    "copy-html-win": "copy src\\index.html dist\\index.html",
+    "serve": "npm run build && npm run copy-html && serve dist/",
+    "serve-win": "npm run build && npm run copy-html-win && serve dist/"
   },
   "repository": {
     "type": "git",
