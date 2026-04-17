@@ -24,13 +24,25 @@ const canvas: HTMLCanvasElement | null = document.querySelector("#kanwus");
 const ctx = canvas?.getContext("2d");
 
 // Draw the ellipse
-ctx?.beginPath();
-ctx?.ellipse(5, 5, 50, 75, Math.PI / 4, 0, 2 * Math.PI);
-ctx?.stroke();
 
-// Draw the ellipse's line of reflection
-ctx?.beginPath();
-ctx?.setLineDash([5, 5]);
-ctx?.moveTo(0, 200);
-ctx?.lineTo(200, 0);
-ctx?.stroke();
+let theta = 0
+
+
+
+function drawEllipse(){
+    
+    ctx?.beginPath();
+    ctx?.ellipse(100, 100, 50, 75, theta, 0, 2 * Math.PI);
+    ctx?.stroke();
+    theta += 0.4
+}
+const s = setInterval(drawEllipse, 100)
+setTimeout(() => {
+    clearInterval(s)
+
+
+}, 3000)
+
+// TODO: DVD logo odbijające się od sramki
+
+
