@@ -23,26 +23,59 @@ b.a = 152
 const canvas: HTMLCanvasElement | null = document.querySelector("#kanwus");
 const ctx = canvas?.getContext("2d");
 
-// Draw the ellipse
 
-let theta = 0
+const canvWidth = canvas?.clientWidth
+const canvHeight = canvas?.clientHeight
+const radius = 40
 
 
+function roll(low: number, high: number): number {
+    const rand = Math.random()
+    let result = Math.floor(rand*(high - low))
 
-function drawEllipse(){
+
+    return result + low
+}
+
+
+let posX = roll(radius, canvWidth! - radius)
+let posY = roll(radius, canvHeight! - radius);
+let vx = roll(1, 10);
+let vy = roll(1, 10);
+
+
+function drawCircle(x: number, y:number, radius: number){
     
     ctx?.beginPath();
-    ctx?.ellipse(100, 100, 50, 75, theta, 0, 2 * Math.PI);
-    ctx?.stroke();
-    theta += 0.4
+    ctx?.ellipse(x, y, radius, radius, 0, 0, 2 * Math.PI);
 }
-const s = setInterval(drawEllipse, 100)
-setTimeout(() => {
-    clearInterval(s)
 
 
-}, 3000)
 
-// TODO: DVD logo odbijające się od sramki
+
+
+
+
+const s = setInterval(() => {
+    ctx?.reset()
+    drawCircle(posX, posY, radius);    
+    ctx?.stroke();
+    posX += vx;
+    posY += vy;
+
+    if((canvWidth! - posX < radius) || posX < radius ){
+        vx *= -1
+    }
+    if((canvHeight! - posY < radius) || posY < radius ){
+        vy *= -1
+    }
+
+
+}, 100)
+
+
+
+
+
 
 
